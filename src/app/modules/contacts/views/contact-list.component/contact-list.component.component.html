@@ -1,0 +1,46 @@
+<div class="header" id="transation-history">
+  <div class="d-flex">
+    <div>
+      <img class="logo" src="assets/images/eco_logo.png" alt="">
+    </div>
+    <div>
+      <button class="back-button" routerLink="../"><img src="assets/images/back.png"
+          alt="Back"></button>
+    </div>
+  </div>
+
+  <div class="titleDiv">
+    <span class="title" id="transactionhistorytitle">Contact list</span>
+  </div>
+  <section class="content">
+    <div class="table">
+      <div class="table-container">
+        <div class="table-header">
+          <div class="item">Handle</div>
+          <div class="item">Name</div>
+          <div class="item">Remove</div>
+        </div>
+        <div class="table-body desktop">
+          <img class="fade-logo" *ngIf="false" src="assets/images/logo-faded.png">
+          <div class="row" *ngFor="let history of [1,2,3,5,5,5,5,5,2,5,5,5,5]">
+            <div class="item">
+              <div class="info">
+                <span>@Nitinkarate</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="info">
+                <span><span class="name-icon">N</span>Nitin</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="info">
+                <span><img src="assets/images/trash-icon.svg" alt="trash" ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

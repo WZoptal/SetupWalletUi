@@ -1,0 +1,66 @@
+<form [formGroup]="sendForm" (ngSubmit)="submitForm()">
+
+  <div class="tab-content send-tab-content">
+    <div class="send-content-head">
+      <p class="send-head">Send to</p>
+    </div>
+    <div class="search-input-main form-group">
+      <input formControlName="searchHandle" class="send-search-input" type="text"
+             placeholder="handle" (focus)="inFocus = true">
+      <span class="at-symbol">@</span>
+      <div *ngIf="searchHandle?.invalid && (searchHandle?.dirty || searchHandle?.touched)" class="alert alert-danger">
+        Please enter a valid user handle
+      </div>
+    </div>
+
+    <div class="amount-sec-main" *ngIf="!inFocus; else handleField">
+      <div class="amount-sec-left">
+        <div class="form-group">
+          <label class="send-label">Amount</label>
+          <div class="amount-input-main" formGroupName="amount">
+            <input formControlName="amount" placeholder="How much?" type="number" class="amount-input">
+            <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
+                 class="alert alert-danger">
+              Amount required
+            </div>
+            <div class="amount-input-img-main">
+              <img src="assets/images/dollar-xs.png" alt="USDSE Token" width="20px">
+              <p>USD<small>SE</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="amount-sec-left">
+        <div class="form-group">
+          <label class="send-label">Memo</label>
+          <div class="amount-input-main">
+            <input formControlName="memo" placeholder="What's it for?" type="text" class="amount-input">
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #handleField class="amount-sec-main">
+      <div class="handle-list">
+        <div class="send-to">Send to:</div>
+        <div *ngFor="let user of userSearchResultList">
+          <div class="user-row" (click)="selectUser(user)">
+            <div class="handle-container">
+              <span class="handle">@{{user.handle | slice:0:15}}</span>
+            </div>
+            <div class="avatar-container">
+              <span class="avatar">{{user.handle | uppercase | slice:0:1}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!--<div class="trasaction-fee-main">
+      <p class="trasaction-fee">Transaction fee: <span>$1.25 USD<small>SE</small></span></p>
+    </div>-->
+    <div class="send-btn-main" *ngIf="!inFocus">
+      <button class="send-btn" [disabled]="sendForm.invalid" [ngClass]="sendForm.invalid? 'grey-button' : ''">Send
+      </button>
+    </div>
+  </div>
+</form>
+<mat-spinner *ngIf="sendingSpinner">Sending</mat-spinner>

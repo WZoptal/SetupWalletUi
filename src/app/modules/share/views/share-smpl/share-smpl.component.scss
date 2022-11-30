@@ -1,0 +1,67 @@
+.body {
+  --background: #202B40;
+}
+ion-card {
+  border-radius: 15px;
+  color: #fff;
+}
+
+.share-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.back-link {
+  position: absolute;
+  top: 1.2rem;
+  left: 4rem;
+  cursor: pointer;
+  & img {
+    height: 20px;
+  }
+}
+
+.smpl-details-block {
+  // TODO: move the color code to variable once it's consistent for all screens
+  background: #192640;
+  border-radius: 30px;
+  padding: .5rem 1rem;
+
+  p {
+    color: #DEDEDE;
+    text-transform: uppercase;
+  }
+}
+
+.qr-image {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.details-block {
+  height: 0;
+  transition: height .4s;
+  overflow: hidden;
+}
+
+.expand {
+  height: 250px;
+}
+
+@media screen and (max-width: 769px) {
+  .logo-wrapper {
+    padding-left: 1rem;
+  }
+  .share-card {
+    min-height: 85vh;
+  }
+  ion-card-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .back-link {
+    left: 2rem;
+  }
+}

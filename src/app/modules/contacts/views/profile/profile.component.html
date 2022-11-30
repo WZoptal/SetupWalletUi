@@ -1,0 +1,32 @@
+<section class="dashboard theme-bg text-white">
+  <div class="header">
+    <div class="d-flex">
+      <img class="logo" src="assets/images/eco_logo.png" style="image-rendering: high-quality" alt="">
+    </div>
+  </div>
+  <div class="content">
+    <div class="user-card">
+      <form (ngSubmit)="updateProfile()" class="profile-form" [formGroup]="form">
+        <div class="form-header">
+          <div class="title">Create Handle</div>
+          <div class="avatar">{{form.controls.handle.value | uppercase | slice:0:1}}</div>
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="handle" placeholder="handle" required />
+          <span class="required-star">*</span>
+          <span class="at-symbol">@</span>
+          <div *ngIf="validationErrorMessage.length > 0" class="error-message">{{ validationErrorMessage }}</div>
+        </div>
+        <div class="form-group required-descriptor">
+          <span class="required-star">*</span>required fields
+        </div>
+        <div class="form-group note">
+          PLEASE NOTE: Once you save your Smpl Handle, you do not have the ability to change it. Choose something that represents you or your business to identify yourself to other Smpl Wallet users.
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn gold save" value="Save" [disabled]="form.controls.handle.value.length == 0" />
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

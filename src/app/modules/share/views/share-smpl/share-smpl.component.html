@@ -1,0 +1,85 @@
+<ion-content class="body">
+  <div class="px-4 py-2 pb-0 logo-wrapper">
+    <img src="assets/images/ecologo.svg" alt="Logo">
+  </div>
+  <ion-grid>
+    <ion-row class="justify-content-center">
+      <ion-col size="12" size-md="9" size-lg="7">
+        <ion-card color="dark" class="ion-no-margin share-card">
+          <ion-card-content class="text-center" *ngIf="ambassadorDetails">
+            <a class="back-link" routerLink="../"><img src="assets/images/back.png" alt="Back"></a>
+            <h1 class="fw-600 mb-4">Share Smpl</h1>
+            <ion-grid>
+              <ion-row class="justify-content-center">
+                <ion-col size="12" size-sm="10" size-md="9" size-lg="9">
+                  <div class="d-flex flex-column m-auto" style="max-width: 400px">
+                    <div class="mb-3">
+                      <div class="d-flex gap-small smpl-details-block mb-1">
+                        <p class="flex-one text-left fw-500">Ambassador referral link</p>
+                        <div class="d-flex align-items-center gap-smallest">
+                          <ion-icon color="primary" class="f-20 cursor-pointer" (click)="showAmbassadorReferralLink = !showAmbassadorReferralLink;
+                            showWalletReferralLink = showWalletAddress = false"
+                                    [name]="showAmbassadorReferralLink ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+                          <ion-img src="assets/images/copy2.png" style="width: 22px" class="cursor-pointer"
+                                   (click)="copyToClipboard('landing/ambassador')"></ion-img>
+                          <ion-icon name="share-social" color="primary" class="f-20 cursor-pointer" *ngIf="isCordova"
+                                    (click)="shareReferralLink('Ambassador', 'landing/ambassador')"></ion-icon>
+                        </div>
+                      </div>
+                      <div class="details-block" [class.expand]="showAmbassadorReferralLink">
+                        <p class="mb-2">Scan to download the Smpl Ambassador App</p>
+                        <img [src]="generateQRCodeLink('landing/ambassador')" alt="QR" class="qr-image">
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex gap-small smpl-details-block mb-1">
+                        <p class="flex-one text-left fw-500">Wallet referral link</p>
+                        <div class="d-flex align-items-center gap-smallest">
+                          <ion-icon color="primary" class="f-20 cursor-pointer" (click)="showWalletReferralLink = !showWalletReferralLink;
+                            showAmbassadorReferralLink = showWalletAddress = false"
+                                    [name]="showWalletReferralLink ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+                          <ion-img src="assets/images/copy2.png" style="width: 22px" class="cursor-pointer"
+                                   (click)="copyToClipboard('landing/purchaser')"></ion-img>
+                          <ion-icon name="share-social" color="primary" class="f-20 cursor-pointer" *ngIf="isCordova"
+                                    (click)="shareReferralLink('Wallet', 'landing/purchaser')"></ion-icon>
+                        </div>
+                      </div>
+                      <div class="details-block" [class.expand]="showWalletReferralLink">
+                        <p class="mb-2">Scan to download the Smpl Wallet App</p>
+                        <img [src]="generateQRCodeLink('landing/purchaser')" alt="QR" class="qr-image">
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex gap-small smpl-details-block mb-1">
+                        <p class="flex-one text-left fw-500">Wallet Address</p>
+                        <div class="d-flex align-items-center gap-smallest">
+                          <ion-icon color="primary" class="f-20 cursor-pointer" (click)="showWalletAddress = !showWalletAddress;
+                            showAmbassadorReferralLink = showWalletReferralLink = false"
+                                    [name]="showWalletAddress ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+                          <ion-img src="assets/images/copy2.png" style="width: 22px" class="cursor-pointer"
+                                   (click)="copyWalletAddress(ambassadorDetails.smplChainWalletAddress)"></ion-img>
+                          <ion-icon
+                            *ngIf="isCordova"
+                            (click)="shareReferralLink('Wallet Address', ambassadorDetails.smplChainWalletAddress)"
+                            name="share-social"
+                            color="primary"
+                            class="f-20 cursor-pointer"
+                          ></ion-icon>
+                        </div>
+                      </div>
+                      <div style="word-wrap: break-word">
+                        <p *ngIf="showWalletAddress">{{ ambassadorDetails.smplChainWalletAddress }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

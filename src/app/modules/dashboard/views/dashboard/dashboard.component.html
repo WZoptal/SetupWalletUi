@@ -1,0 +1,102 @@
+<section class="dashboard theme-bg text-white">
+  <div class="header">
+    <div class="d-flex">
+      <div>
+        <img class="logo" src="assets/images/eco_logo.png" alt="">
+      </div>
+      <div class="user nav-menu" [matMenuTriggerFor]="menu" *ngIf="profile$ | async as profile; else loadingUser">
+        <div class="avatar" src="assets/images/user.png" alt="">{{ profile.handle | uppercase | slice:0:1 }}</div>
+        <span>@{{profile.handle}}</span>
+        <img src="assets/images/down-arrow.png" alt="">
+      </div>
+      <ng-template #loadingUser>
+        <div class="user">
+          <div class="avatar"></div>
+          <span>User</span>
+          <img src="assets/images/down-arrow.png" alt="">
+        </div>
+      </ng-template>
+      <mat-menu #menu="matMenu" class="text-white">
+        <a routerLink="/share-smpl" *ngIf="ambassador$ | async">
+          <button mat-menu-item>
+            <img src="assets/images/share.png" alt="Share"> Share Smpl
+          </button>
+        </a>
+        <a [href]="ambassadorUrl" target="_blank" *ngIf="ambassador$ | async">
+          <button mat-menu-item>
+            <img src="assets/images/ambassador-icon.png" alt="Share"> Smpl Ambassador
+          </button>
+        </a>
+        <a routerLink="/transaction-history">
+          <button mat-menu-item>
+            <img src="assets/images/CalendarBlank.svg" alt="Transaction History"/> Transaction History
+          </button>
+        </a>
+        <a [href]="passwordChangeUrl" target="_blank">
+          <button mat-menu-item>
+            <img src="assets/images/lock.png" alt=""> Change Password
+          </button>
+        </a>
+        <!--<a [href]="updateProfileUrl" target="_blank">
+          <button mat-menu-item>
+            <img src="assets/images/user.png" alt=""> Profile
+          </button>
+        </a>-->
+        <button mat-menu-item (click)="logout()">
+          <img src="assets/images/logout.png" alt=""> Log out
+        </button>
+      </mat-menu>
+    </div>
+    <div class="d-flex" *ngIf="showContainer">
+      <div class="balance">
+        <span>Total Available Balance</span>
+        <span class="amount" *ngIf="usdseBalance$ | async as actualBalance; else zero">
+          {{actualBalance | number}}
+        </span>
+        <ng-template #zero><span class="amount">0.00</span></ng-template>
+        <!--<span [matMenuTriggerFor]="money" class="cursor-pointer" hidden>-->
+        <span>&nbsp;</span>
+        <span class="currency">USD<small>SE</small></span>
+        <!--<img src="assets/images/down-arrow.png" alt="">-->
+        <!--</span>-->
+        <mat-menu #money="matMenu" class="text-white" xPosition="before" hidden>
+          <button mat-menu-item>
+            <img src="assets/images/usdlogo.png" alt="" style="width: 27px; margin-bottom: 5px;"> USD
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="mobile-view" *ngIf="!showContainer">
+      <div class="balance">
+        <div>Total Available Balance</div>
+        <div>
+          <span class="amount" *ngIf="usdseBalance$ | async as actualBalance; else zero">
+            {{actualBalance | number}}
+          </span>
+          <ng-template #zero><span class="amount">0.00</span></ng-template>
+          <!--<span [matMenuTriggerFor]="money" class="cursor-pointer" hidden>-->
+          <span>&nbsp;</span>
+          <span class="currency">USD<small>SE</small></span>
+          <!--<img src="assets/images/down-arrow.png" alt="">-->
+          <!--</span>-->
+          <mat-menu #money="matMenu" class="text-white" xPosition="before">
+            <button mat-menu-item>
+              <img src="assets/images/usdlogo.png" alt="" style="width: 27px; margin-bottom: 5px;"> USD
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <div class="navs">
+        <div [@pillSlider]="activePill" class="pill"></div>
+        <a [routerLink]="['/dashboard/token']" [routerLinkActive]="['active']" (click)="setPillState('token')">Token</a>
+        <a [routerLink]="['/dashboard/nft']" [routerLinkActive]="['active']" (click)="setPillState('nft')">NFT</a>
+      </div>
+      <app-wallet-address></app-wallet-address>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</section>

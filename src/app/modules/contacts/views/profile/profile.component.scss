@@ -1,0 +1,154 @@
+.dashboard {
+    min-height: 100vh;
+    font-size: var(--font-16);
+    padding: 10px 10px 79px;
+    .header {
+        padding: 10px 40px;
+        .logo {
+            max-width: 244px;
+        }
+    }
+    .user-card {
+        max-width: 870px;
+        margin: auto;
+        text-align: center;
+        .form-header {
+            margin: 66px auto 100px;
+            .avatar {
+                width: 40px;
+                height: 40px;
+                background: #D9BE7C;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-weight: 700;
+                font-size: 23px;
+                line-height: 28px;
+            }
+            .title {
+                font-weight: 700;
+                font-size: 36px;
+                line-height: 44px;
+                margin-bottom: 30px;
+            }
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 2.7461px 7.55177px rgba(0, 0, 0, 0.25), -0.686525px 0px 6.86525px rgba(132, 132, 132, 0.11);
+            border-radius: 10px;
+            padding: 20px;
+            
+            .text-white {
+                color: #fff;
+            }
+            p{
+                color: #BFBFBF;
+            }
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: stretch;
+                position: relative;
+                width: 90%;
+                max-width: 496px;
+                padding-bottom: 0px;
+                margin-bottom: 53px;
+                input, input:focus, input:active {
+                    border: rgba(255, 255, 255, 0.1) 0px solid;
+                    border-radius: 0px;
+                    border-bottom-width: 1px;
+                    background-color: transparent;
+                    width: 100%;
+                    padding: 11px 16px 11px 32px;
+                    color: white;
+                }
+                input::placeholder, .at-symbol {
+                    color: #939399;
+                    font-size: 14px;
+                }
+                input:focus {
+                    border-bottom-color: white;
+                }
+                input+.required-star {
+                    position: absolute;
+                    top: 7px;
+                    left: 4px;
+                }
+                .at-symbol {
+                    position: absolute;
+                    top: 11px;
+                    left: 16px;
+                }
+                .btn.gold {
+                    align-self: center;
+                    background: #CBB26A;
+                    border-width: 0px;
+                    border-radius: 4px;
+                    color: #19253E;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 20px;
+                    margin-top: 15px;
+                    max-width: 269px;
+                    height: 54px;
+                    &:disabled {
+                        opacity: 0.4;
+                        cursor: default;
+                    }
+                }
+                &.required-descriptor {
+                    padding-left: 5px;
+                    margin-bottom: 43px;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    font-size: 14px;
+                    color: #939399;
+                }
+                &.note {
+                    margin-bottom: 51px;
+                    justify-content: flex-start;
+                    font-size: 11px;
+                    text-align: start;
+                    line-height: 15px;
+                }
+            }
+            .required-star {
+                color: #EC5B5B;
+                margin-right: 4px;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+            }
+            .error-message {
+                color: #EC5B5B;
+                font-size: 14px;
+                text-align: start;
+                margin-top: 8px;
+            }
+            
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard {
+        .user-card {
+            .form-header {
+                margin: 0px auto 35px;
+                .title {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                }
+            }
+            form {
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+}

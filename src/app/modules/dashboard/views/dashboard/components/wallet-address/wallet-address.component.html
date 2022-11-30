@@ -1,0 +1,17 @@
+<div class="wallet-container">
+    <div class="wallet-label" (click)="showAddress=!showAddress">
+        <span>wallet address</span>
+        <img [@rotateArrow]="showAddress ? 'left' : 'right'" src="assets/images/arrow-right.svg" alt="" class="arrow" />
+    </div>
+    <ng-container *ngIf="primaryAddress$ | async as walletAddress; else noAddressFound">
+        <div [@showWalletAddress]="showAddress ? 'show' : 'hide'" class="wrapping-wallet">
+            <span>{{walletAddress | slice : 0: 7}}...{{walletAddress | slice : -4}}</span>
+            <img (click)="copyAddress(walletAddress)" src="assets/images/copy2.png" alt="" class="copy-icon"/>
+        </div>
+    </ng-container>
+    <ng-template #noAddressFound>
+        <div [@showWalletAddress]="showAddress ? 'show' : 'hide'" class="wrapping-wallet">
+            <span>Error retrieving address</span>
+        </div>
+    </ng-template>
+</div>

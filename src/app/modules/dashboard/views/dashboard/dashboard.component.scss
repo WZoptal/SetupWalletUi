@@ -1,0 +1,207 @@
+.dashboard {
+  min-height: 100vh;
+  font-size: var(--font-16);
+  .logo {
+    max-width: 250px;
+    object-fit: scale-down;
+  }
+  .header {
+    padding: 30px 50px;
+    border-bottom: 1px solid rgba($color: #E5E9F1, $alpha: 0.1);
+    z-index: 10;
+    .d-flex {
+      display: flex;
+      align-items: center;
+      vertical-align: center;
+      justify-content: space-between;
+      &:not(:first-child) {
+        margin-top: 0px;
+      }
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+        font-size: var(--font-14);
+        cursor: pointer;
+      .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #D9BE7C;
+        color: white;
+        font-size: 19px;
+        font-weight: 700;
+      }
+      img {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        margin: 0 8px;
+      }
+    }
+  }
+  .content {
+    padding: 30px 50px;
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      .navs {
+        background: rgba($color: #fff, $alpha: 0.3);
+        display: flex;
+        width: 210px;
+        height: 40px;
+        border-radius: 20px;
+        position: relative;
+        a {
+          font-size: var(--font-14);
+          font-weight: var(--weight-500);
+          color: var(--white);
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+        }
+        .pill {
+          background: #19253E;
+          position: absolute;
+          top: 4px;
+          bottom: 4px;
+          border-radius: 16px;
+          z-index: 0;
+        }
+      }
+    }
+    .d-flex {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-section {
+      flex: 0 0 57%;
+      max-width: 57%;
+    }
+    .right-section {
+      flex: 0 0 40%;
+      max-width: 40%;
+      background: rgba($color: #2D3647, $alpha: 0.5);
+      border-radius: 14px;
+    }
+  }
+}
+.balance {
+  display: flex;
+  align-items: flex-end;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 10px;
+  .amount {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 22px;
+    line-height: 22px;
+  }
+  .currency {
+    font-size: 14px;
+    margin-left: 4px;
+    font-weight: 550;
+    color: #D0AD6A;
+  }
+  img {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+}
+.mobile-view {
+  justify-content: center;
+  display: flex;
+  padding: 5px 0px;
+  .amount {
+    margin-left: 0px;
+  }
+  .balance div {
+    margin: 7px;
+  }
+}
+
+@media only screen and (max-width: 1252px) {
+  .dashboard {
+    margin-top: 162px;
+    .header {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #19253E;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard {
+    margin-top: 90px;
+    padding-top: 0px;
+    .header {
+      padding: 15px;
+      .logo {
+        width: 175px;
+        margin-top: 10px;
+      }
+      .nav-menu {
+        .avatar {
+          width: 27px;
+          height: 27px;
+          font-size: 17px;
+        }
+        img, span {
+          display: none;
+        }
+      }
+      .d-flex {
+        &:not(:first-child) {
+          border-top: 1px solid rgba($color: #E5E9F1, $alpha: 0.1);
+          margin:0 -15px;
+          margin-top: 20px;
+          padding: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+          div {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 25px;
+            &:last-child {
+                margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .content {
+      padding: 15px;
+      padding-top: 0px;
+      .nav-wrapper {
+        flex-direction: column;
+        margin-bottom: 5px;
+        .navs {
+          margin: 3px 0px;
+        }
+      }
+    }
+  }
+  .balance {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: center;
+    display: flex;
+  }
+}

@@ -1,0 +1,21 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+domains:
+- domain: staging.wallet.smplfoundation.org
+  type: PRIMARY
+  zone: smplfoundation.org
+name: smpl-wallet-ui-staging
+region: sfo
+services:
+- http_port: 80
+  image:
+    registry_type: DOCR
+    repository: smpl-wallet-ui
+    tag: 1.0.21
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: smpl-wallet-ui-staging
+  routes:
+  - path: /
+  source_dir: /

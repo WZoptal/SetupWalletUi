@@ -1,0 +1,130 @@
+<div class="header" id="transation-history">
+  <div class="d-flex">
+    <div>
+      <img class="logo" src="assets/images/eco_logo.png" alt="">
+    </div>
+    <div>
+      <button class="back-button" (click)="navigateBack()"><img src="assets/images/back.png"
+          alt="Back"></button>
+    </div>
+  </div>
+
+  <div *ngIf="isShowHistory" class="titleDiv">
+    <span class="title" id="transactionhistorytitle">Transaction History</span>
+  </div>
+  <section class="content">
+    <div class="table" *ngIf="isShowHistory">
+      <div class="table-container">
+        <div class="table-header">
+          <div class="item">Handle</div>
+          <div class="item">Wallet Address</div>
+          <div class="item">Amount</div>
+          <div class="item">Status</div>
+          <div class="item">Date</div>
+          <div class="item">Time</div>
+          <div class="item">Transaction Fee</div>
+          <div class="item memo">Memo</div>
+        </div>
+        <div class="table-body desktop">
+          <img class="fade-logo" *ngIf="(transactions$ | async)?.length==0" src="assets/images/logo-faded.png">
+          <div class="row" *ngFor="let history of transactions$ | async;let i = index">
+            <div class="item">
+              <div class="info">
+                <span>@{{history.handle}}</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="info">
+                <span>{{formatAddress(history.walletAddress)}}</span>
+              </div>
+            </div>
+            <div class="item">
+              <img class="amountLogo" *ngIf="history.denom === 'usdse'" src="assets/images/dollar-xs.png" alt="">
+              <img class="amountLogo" *ngIf="history.denom !== 'usdse'" src="assets/images/logo-xs.png" alt="">
+              <div class="info">
+                <span class="rate">{{formatAmount(history.amount)}}</span>
+                <span class="denom">&nbsp;{{formatDenom(history.denom)[0]}}<small *ngIf="formatDenom(history.denom).length > 1">{{formatDenom(history.denom)[1]}}</small></span>
+              </div>
+            </div>
+            <div class="item">
+              <img *ngIf="history.status==='sent'" src="assets/images/check_sent.svg" alt="">
+              <img class="receivedLogo" *ngIf="history.status==='received'" src="assets/images/check_received.svg" alt="">
+              <div class="info">
+                <span class="statusSent" *ngIf="history.status==='sent'">
+                  {{history.status | titlecase}}
+                </span>
+                <span class="statusReceived" *ngIf="history.status==='received'">
+                  {{history.status | titlecase}} </span>
+
+              </div>
+            </div>
+            <div class="item">
+              <div class="info">
+                <span>{{history.timestamp | date : 'mediumDate'}}</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="info">
+                  <span>{{history.timestamp | date : 'mediumTime'}}</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item">
+                <img class="amountLogo" *ngIf="history.transactionFee.denom === 'usdse'" src="assets/images/dollar-xs.png" alt="">
+                <img class="amountLogo" *ngIf="history.transactionFee.denom !== 'usdse'" src="assets/images/logo-xs.png" alt="">
+                <div class="info">
+                  <span class="rate">{{formatAmount(history.transactionFee.amount)}}</span>
+                  <span class="denom">&nbsp;{{formatDenom(history.transactionFee.denom)[0]}}<small *ngIf="formatDenom(history.transactionFee.denom).length > 1">{{formatDenom(history.transactionFee.denom)[1]}}</small></span>
+                </div>
+              </div>
+            </div>
+            <div class="item memo">
+              <div class="info">
+                <span class="memo-desktop">{{history.memo}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-body mobile">
+          <img class="fade-logo" *ngIf="(transactions$ | async)?.length==0" src="assets/images/logo-faded.png">
+          <div *ngFor="let history of transactions$ | async;let i = index">
+            <div class="row" (click)='details(history)'>
+              <div class="item">
+                <div class="info address-status">
+                  <div>@{{history.handle}}</div>
+                  <div class="status">
+                    <img class="status-img" *ngIf="history.status==='sent'"
+                      src="assets/images/check_sent.svg" alt="">
+                    <img class="status-img" *ngIf="history.status==='received'"
+                      src="assets/images/check_received.svg" alt="">
+                    <div class="info mobile">
+                      <span class="statusSent" *ngIf="history.status==='sent'">
+                        {{history.status | titlecase}}
+                      </span>
+                      <span class="statusReceived" *ngIf="history.status==='received'">
+                        {{history.status | titlecase}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img class="amountLogo" *ngIf="history.denom === 'usdse'" src="assets/images/dollar-xs.png" alt="">
+                <img class="amountLogo" *ngIf="history.denom !== 'usdse'" src="assets/images/logo-xs.png" alt="">
+                <div class="info">
+                  <div class="rate">{{formatAmount(history.amount)}}</div>
+                  <div class="denom">&nbsp;{{formatDenom(history.denom)[0]}}<small *ngIf="formatDenom(history.denom).length > 1">{{formatDenom(history.denom)[1]}}</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="row mobile"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <app-transaction-details *ngIf="!isShowHistory" [item]="transactionDetails" [isShowHistory]="isShowHistory"
+      id="detailsPage"></app-transaction-details>
+
+  </section>
+</div>

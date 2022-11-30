@@ -1,0 +1,395 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$smpl-wallet-primary: mat.define-palette(mat.$indigo-palette);
+$smpl-wallet-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$smpl-wallet-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$smpl-wallet-theme: mat.define-light-theme((
+  color: (
+    primary: $smpl-wallet-primary,
+    accent: $smpl-wallet-accent,
+    warn: $smpl-wallet-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($smpl-wallet-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+:root {
+  --white: #fff;
+  --theme-bg-gradient: radial-gradient(50% 50% at 50% 50%, #353430 0%, #19253E 100%);
+  --font-24: 24px;
+  --font-20: 20px;
+  --font-14: 14px;
+  --font-12: 12px;
+  --font-10: 10px;
+  --font-18: 18px;
+  --font-16: 16px;
+  --font-30: 30px;
+  --font-32: 32px;
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --theme-clr: #D9BE7C;
+}
+
+:root {
+	--ion-color-primary: #CBB26A;
+	--ion-color-primary-rgb: 203,178,106;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #b39d5d;
+	--ion-color-primary-tint: #d0ba79;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  transition: all ease-in-out 0.2s;
+}
+button {
+  outline: none;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-14);
+  color: var(--white);
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.theme-bg {
+  background: var(--theme-bg-gradient);
+  color: var(--white);
+}
+h1 {
+  font-size: var(--font-32);
+  margin: 0;
+  //color: #10203E;
+  @media (max-width: 768px) {
+    font-size: var(--font-24);
+  }
+}
+.w-100 {
+  width: 100%;
+}
+.btn {
+  background: #274D94;
+  border: 2px solid #274D94;
+  border-radius: 4px;
+  color: #F7F8FC;
+  display: block;
+  padding: 12px 40px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  font-size: var(--font-16);
+  font-weight: var(--weight-700);
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  cursor: pointer;
+  &.default{
+      background: var(--white);
+      color: #0C092A;
+      border-color: transparent;
+  }
+  &.warning {
+    background: #D9BE7C;
+    color: #19253E;
+    border-color: transparent;
+  }
+  img {
+      display: inline-block;
+      vertical-align: middle;
+  }
+  @media (max-width: 768px) {
+    font-size: var(--font-14);
+    padding: 10px 20px;
+  }
+}
+.form-holder {
+  width: 380px;
+  margin: auto;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px;
+  }
+}
+.form-group {
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 15px;
+  label {
+      color: #252B42;
+      display: block;
+      font-size: var(--font-14);
+      font-weight: var(--weight-600);
+      letter-spacing: 0.2px;
+      margin-bottom: 10px;
+      text-align: left;
+  }
+  input {
+    background: #F7F8FC;
+    border-radius: 5px;
+    border: 1px solid #F7F8FC;
+    padding: 15px 18px;
+    font-size: var(--font-14);
+    letter-spacing: 0.2px;
+    font-weight: var(--weight-400);
+    font-family: "Montserrat", sans-serif;
+    display: block;
+    width: 100%;
+    color: #1C386C;
+    &.ng-invalid.ng-touched {
+      border-color: #f2d691;
+    }
+  }
+  ::placeholder {
+    color: #737373;
+    font-size: var(--font-14);
+    letter-spacing: 0.2px;
+    font-weight: var(--weight-400);
+  }
+  .error-msg {
+    color: #D9BE7C;
+    font-size: var(--font-12);
+    margin: 0;
+    margin-bottom: 5px;
+  }
+}
+.page-header {
+  margin-bottom: 40px;
+  img {
+    @media (max-width: 768px) {
+      max-width: 90px;
+    }
+  }
+  h1 {
+    margin-top: 30px;
+    @media (max-width: 768px) {
+      font-size: var(--font-20);
+    }
+  }
+  p {
+    color: rgba($color: #10203E, $alpha: 0.6);
+  }
+}
+.mat-dialog-container{
+  background: #E3E2E2;
+}
+.mat-dialog-content{
+  color:rgba($color: #10203E, $alpha: 0.6);
+  font-size: var(--font-14);
+  text-align: center;
+  button {
+      background: #274D94;
+      color: var(--white);
+      font-weight: var(--weight-700);
+      width: 100px;
+      margin-top: 20px;
+  }
+}
+.mat-menu-panel {
+  background: #242E43;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-top: 12px;
+  .mat-menu-item {
+    color: var(--white);
+    font-family: "Montserrat", sans-serif;
+    &:not(:first-child) {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 12px;
+      max-width: 20px;
+    }
+  }
+}
+.mat-ink-bar {
+  display: none;
+}
+.mat-tab-group {
+  font-family: 'Montserrat', sans-serif;
+}
+.mat-tab-labels {
+  justify-content: space-around;
+  .mat-tab-label {
+    font-size: var(--font-14);
+    font-weight: var(--weight-500);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    opacity: 1;
+    min-width: auto;
+    height: auto;
+    text-transform: uppercase;
+    padding: 0 15px;
+    &.mat-tab-label-active{
+      color: #D9C47A;
+    }
+    .icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #353B4A;
+      margin-right: 7px;
+      vertical-align: middle;
+      img {
+        max-width: 20px;
+      }
+    }
+    @media (max-width: 768px) {
+      padding: 0 3px;
+      font-size: var(--font-12);
+      .mat-tab-label-content {
+        flex-wrap: wrap;
+      }
+      span:not(.icon) {
+        display: block;
+        margin-top: 5px;
+        width: 100%;
+      }
+      .icon {
+          margin-right: 0px;
+      }
+    }
+  }
+}
+.mat-tab-header{
+  border: none;
+}
+.tab-content {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--font-14);
+  text-align: center;
+}
+.mat-tab-header-pagination-chevron {
+  border-color: rgb(181 181 181 / 98%);
+}
+.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+  border-color: rgb(181 181 181 / 87%);
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+  margin-right: -1000px;
+  margin-top: 100px;
+  @media (max-width: 880px) {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 7px;
+  height: 7px;
+  background-color: #929292;
+  border-radius: 10px;
+  @media (max-width: 880px) {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+
+
+// Flex Classes
+.d-flex {
+  display: flex;
+}
+.flex-column { flex-direction: column; }
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.flex-one {
+  flex: 1;
+}
+.gap-smallest {
+  gap: .5rem;
+}
+.gap-small {
+  gap: 1rem;
+}
+.gap-medium {
+  gap: 2rem;
+}
+.gap-large {
+  gap: 3rem;
+}
+
+// Font Sizes
+.f-14 { font-size: 14px; }
+.f-20 { font-size: 20px; }
+.f-24 { font-size: 24px; }
+
+// Font Weights
+.fw-500 { font-weight: 500 !important; }
+.fw-600 { font-weight: 600 !important; }
+
+// Margin
+.m-auto { margin: auto; }
+.mb-1 { margin-bottom: .5rem !important; }
+.mb-2 { margin-bottom: 1rem !important; }
+.mb-3 { margin-bottom: 1.5rem !important; }
+.mb-4 { margin-bottom: 2rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+
+// Padding
+.px-4 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.py-2 { 
+  padding-top: 1rem; 
+  padding-bottom: 1rem;
+}
+.pb-0 { padding-bottom: 0; }
+
+// Extra
+.cursor-pointer { cursor: pointer; }

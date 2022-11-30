@@ -1,0 +1,103 @@
+<section class="instruction-page">
+  <div style="display: flex; justify-content: flex-end">
+    <mat-icon (click)="dialogRef.close()">highlight_off</mat-icon>
+  </div>
+  <p class="gold small">To finalize your account, you need to first own SMPL Token.</p>
+  <h1>Acquire SMPL Token</h1>
+  <p>We will help you through the process of acquiring SMPL Token through completing a wire transfer.</p>
+  <p>Wire transfers are a method used to transfer money securely from one bank account to another. The method of
+    submitting a wire transfer varies depending on your bank.</p>
+  <p>If you have any issues or questions, please email us at <a href="mailto:token@smplecosystem.org">token@smplecosystem.org</a>.
+  </p>
+  <div class="instructions-container">
+    <div class="steps">
+      <h2>Wiring Instructions:</h2>
+      <ul class="instructions">
+        <ol>
+          <div class="number-container">1</div>
+          <p>Calculate the amount to transfer:<br/>(Desired amount of SMPL Token) x .0025 = (USD to transfer)</p>
+        </ol>
+        <ol>
+          <div class="number-container">2</div>
+          <p>You will need to contact your bank to complete a wire transfer. They can walk you through their system.
+            Many banks require wire transfers to be completed over the phone.</p>
+        </ol>
+        <ol>
+          <div class="number-container">3</div>
+          <p>Use the “Smpl Foundation Bank Details”, to complete the wire transfer.</p>
+        </ol>
+        <ol>
+          <div class="number-container">4</div>
+          <div>
+            <p>Before submitting the wire transfer, please add this personal code to the wire memo or notes field:</p>
+            <div class="code-container" *ngIf="personalCode$ | async as personalCode">
+              <div class="label">Personal Code:</div>
+              <div class="code">
+                <span *ngFor="let char of personalCode.split('')">
+                  <span class="digit">{{ char.toUpperCase() }}</span>&nbsp;
+                </span>
+              </div>
+              <img (click)="copyCode(personalCode)" src="assets/images/copy.png" alt=""
+                   style="image-rendering: high-quality">
+            </div>
+          </div>
+        </ol>
+        <ol>
+          <div class="number-container">5</div>
+          <div>
+            <p>After submitting the wire transfer, please send your wallet address and the amount you transferred to <a
+              href="mailto:token@smplecosystem.org">token@smplecosystem.org</a> to ensure promptness.</p>
+            <div class="address">
+              <div class="label">Wallet Address</div>
+              <div *ngIf="primaryAddress$ | async as walletAddress">
+                <button mat-button [matMenuTriggerFor]="menu"><img src="assets/images/drop-down.png" class="wallet-dropdown"></button>
+                <mat-menu #menu class="wallet-menu">
+                  <div class="wrapping-wallet">
+                    <img (click)="copyCode(walletAddress)" src="assets/images/copy.png" alt="" class="copy-icon"/>
+                    {{walletAddress}}
+                  </div>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </ol>
+      </ul>
+    </div>
+    <div class="bank-details">
+      <h2>Smpl Foundation Bank Details:</h2>
+      <div><strong>Receiving Bank Name:</strong> JPMorgan Chase Bank, N.A.</div>
+      <span class="spacer"></span>
+      <div><strong>Bank Address:</strong> 383 Madison Avenue, New York, NY, 10017</div>
+      <span class="spacer"></span>
+      <div><strong>Account Name:</strong> Smpl Foundation</div>
+      <span class="spacer"></span>
+      <div><strong>Company Address:</strong> 2136 W Northridge Drive, Lehi, UT, 84043-6372</div>
+      <span class="spacer"></span>
+      <div><strong>Account Number:</strong> 820638085</div>
+      <span class="spacer"></span>
+      <div><strong>For Domestic Wires, ABA Routing/Transit Number:</strong> 021000021</div>
+      <span class="spacer"></span>
+      <div><strong>For International Transfers, Chase Swift Code:</strong> CHASUS33</div>
+      <span class="spacer"></span>
+      <div>
+        <strong>Memo/Notes:</strong>
+        <div class="code-container" *ngIf="personalCode$ | async as personalCode">
+          <div class="code">
+                <span *ngFor="let char of personalCode.split('')">
+                  <span class="digit">{{ char.toUpperCase() }}</span>&nbsp;
+                </span>
+          </div>
+          <img (click)="copyCode(personalCode)" src="assets/images/copy.png" alt=""
+               style="image-rendering: high-quality">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-text">
+    <p>The process of adding SMPL Token to your account will soon be automated, but is done manually
+      for the time
+      being. Once we receive <br/> the wire transfer, we make the transfer of tokens.</p>
+  </div>
+</section>
+
+

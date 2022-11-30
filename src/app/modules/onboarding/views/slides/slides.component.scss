@@ -1,0 +1,265 @@
+::ng-deep .swiper-button-prev, ::ng-deep .swiper-button-next {
+  display: none !important;
+}
+
+::ng-deep .swiper-pagination-bullet {
+  background: #AEAEAE;
+  opacity: 1;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  background: #192640;
+  opacity: 1;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+main {
+  width: 100%;
+  background: radial-gradient(50% 50% at 50% 50%, #353430 0%, #19253E 100%);
+}
+
+.logo-title {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: -20px;
+}
+
+.eco-logo {
+  max-width: 250px;
+  object-fit: scale-down;
+}
+
+
+
+@media (max-width: 768px) {
+  .eco-logo {
+    width: 175px;
+  }
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #E3E3E3;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 15px;
+  padding: 40px 40px 60px 55px;
+  max-width: 1100px;
+  margin: 25px auto;
+  color: #202B40;
+  position: relative;
+  font-size: 16px;
+  color: #202B40;
+  margin-top: 80px;
+
+  .logo {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .row {
+    display: flex;
+
+    .col {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding: 15px;
+
+      .images {
+        img + img {
+          transform: translate(8px, 30px);
+        }
+      }
+    }
+  }
+}
+
+.sw-next,
+.sw-prev {
+  width: 33px;
+  height: 33px;
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 38px);
+  bottom: 30px;
+  background: url('/src/assets/images/arrow-normal.png') no-repeat;
+  z-index: 9;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow {
+  margin: 0 -20px 0 -20px
+}
+
+.sw-prev:hover {
+  transform: rotate(0deg);
+  background: url('/src/assets/images/arrow-active.png') no-repeat;
+}
+
+.sw-next {
+  left: calc(50% + 4px);
+  transform: rotate(180deg);
+
+  &:hover {
+    transform: rotate(180deg);
+    background: url('/src/assets/images/arrow-active.png') no-repeat;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-img {
+    display: none;
+  }
+
+  .mb-logo {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mb-logo {
+    margin: 12px;
+    display: block;
+  }
+  .dropdown-container {
+    cursor: pointer;
+    text-align: center;
+    background: #e3e3e3;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.less {
+      display: none;
+    }
+  }
+  .more {
+    overflow: hidden;
+    position: relative;
+
+    max-height: 95px;
+    -webkit-transition: max-height 0.7s ease-in-out;
+    -moz-transition: max-height 0.7s ease-in-out;
+    -o-transition: max-height 0.7s ease-in-out;
+    transition: max-height 0.7s ease-in-out;
+    &.active {
+      min-height: fit-content;
+      max-height: unset;
+    }
+    &.active + .dropdown-container .dropdown{
+      transform: rotate(180deg);
+    }
+    img {
+      height: auto;
+    }
+  }
+  .mobile-img {
+    text-align: center;
+
+    .swiper {
+      padding-bottom: 30px;
+    }
+  }
+  .slider {
+    margin: 15px;
+    padding: 5px;
+    padding-bottom: 60px;
+    min-height: auto;
+    margin-top: 0;
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .row {
+      flex-wrap: wrap;
+
+      .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        .images {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.smpl-wallet-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #9C721E;
+  margin-bottom: 5px;
+}
+
+.slides-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: #202B40;
+}
+
+.slides-head {
+  margin-top: 0;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+ul {
+  margin: 0.75em 0;
+  padding: 0 1em;
+  list-style: none;
+}
+
+.bullet-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.3px;
+  color: #202B40;
+}
+
+.bullets {
+  margin-top: 15px;
+  display: flex;
+
+}
+
+.bullets img {
+  margin-right: 16px;
+}
+
+.dropdown {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.screens {
+  height: 366px;
+
+}

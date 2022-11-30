@@ -1,0 +1,8 @@
+{
+  "name": "Smpl Wallet",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "49f6ac8a"
+}

@@ -1,0 +1,118 @@
+<section class="content">
+  <div class="left-box">
+    <div class="table-container">
+      <div class="table-header">
+        <span *ngFor="let key of columns">{{key.label}}</span>
+      </div>
+      <div class="table-body">
+        <div class="row" *ngFor="let balance of smplBalances$ | async">
+          <div class="item">
+            <img *ngIf="balance.denom === 'usdse'" src="assets/images/dollar-xs.png" alt="">
+            <img *ngIf="balance.denom === 'smpl'" src="assets/images/smpl-birds-icon.png" alt="">
+            <div class="info">
+              <p>
+                <span class="currency">{{balance.denom | uppercase}}</span>
+                <span class="rate">{{balance.amount}}</span>
+              </p>
+              <span class="up">100%</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="info" *ngIf="balance.denom === 'smpl'; else USDse1">
+              <img src="assets/images/smpl-birds-icon.png">
+              <p>
+                <span>{{balance.amount}}</span>
+                <span class="rate">{{smplBalance | smplToUsd | currency}}</span>
+              </p>
+            </div>
+          </div>
+          <ng-template #USDse1 class="item">
+            <div class="info">
+              <p>
+                <span>{{balance.amount | currency}}</span>
+              </p>
+            </div>
+          </ng-template>
+          <div class="item">
+            <div class="info" *ngIf="balance.denom === 'smpl'; else USDse2">
+              <img src="assets/images/smpl-birds-icon.png">
+              <p>
+                <span>{{0}}</span>
+                <span class="rate">{{0 | currency}}</span>
+              </p>
+            </div>
+          </div>
+          <ng-template #USDse2>
+            <div class="info">
+              <p>
+                <span>{{0 | currency}}</span>
+              </p>
+            </div>
+          </ng-template>
+          <div class="item">
+            <div class="info" *ngIf="balance.denom === 'smpl'; else USDse3">
+              <img src="assets/images/smpl-birds-icon.png">
+              <p>
+                <span>{{balance.amount}}</span>
+                <span class="rate">{{smplBalance | smplToUsd | currency}}</span>
+              </p>
+            </div>
+          </div>
+          <ng-template #USDse3 class="item">
+            <div class="info">
+              <p>
+                <span>{{balance.amount | currency}}</span>
+              </p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-box">
+    <mat-tab-group class="cstm-mat-tabs">
+      <mat-tab #convert>
+        <ng-template mat-tab-label>
+                    <span class="icon">
+                        <img *ngIf="!convert.isActive" src="assets/images/arrows_clockwise.svg" alt="">
+                        <img *ngIf="convert.isActive" src="assets/images/arrows_clockwise_active.svg" alt="">
+                    </span>
+          <span>Convert</span>
+        </ng-template>
+        <div class="tab-content">Cannot currently convert</div>
+      </mat-tab>
+      <mat-tab #send>
+        <ng-template mat-tab-label>
+                    <span class="icon">
+                        <img *ngIf="!send.isActive" src="assets/images/send.png" alt="">
+                        <img *ngIf="send.isActive" src="assets/images/send-active.png" alt="">
+                    </span>
+          <span>Send</span>
+        </ng-template>
+        <app-send-tab></app-send-tab>
+      </mat-tab>
+      <div class="tabContainer">
+        <mat-tab #recieve>
+          <ng-template mat-tab-label>
+                        <span class="icon">
+                            <img *ngIf="!recieve.isActive" src="assets/images/download.png" alt="">
+                            <img *ngIf="recieve.isActive" src="assets/images/download-active.png" alt="">
+                        </span>
+            <span>Recieve</span>
+          </ng-template>
+          <div class="tab-content">Cannot currently receive</div>
+        </mat-tab>
+        <mat-tab #deposit>
+          <ng-template mat-tab-label>
+                        <span class="icon">
+                            <img *ngIf="!deposit.isActive" src="assets/images/depositIcon.svg" alt="">
+                            <img *ngIf="deposit.isActive" src="assets/images/depositIcon-active.svg" alt="">
+                        </span>
+            <span>Deposit</span>
+          </ng-template>
+          <div class="tab-content">Cannot currently deposit</div>
+        </mat-tab>
+      </div>
+    </mat-tab-group>
+  </div>
+</section>

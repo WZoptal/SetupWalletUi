@@ -1,0 +1,267 @@
+<section class="page">
+  <main class="logo-title">
+    <a [routerLink]="['/']" class="mb-logo">
+      <img class="eco-logo" src="assets/images/eco_logo.png" alt="Smpl Ecosystem Logo">
+    </a>
+    <div class="slider">
+      <img class="logo" src="assets/images/smpl_birds.svg" alt="">
+      <swiper [config]="config" #swiper>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2 class="slides-head">Wallet ID simplified: Create a Smpl Handle!</h2>
+                <div class="more">
+                  <p class="slides-text">Before you can enter your dashboard, you must create a handle.
+                    A handle is a simplified username that allows others to find and transact with you without
+                    the need to input your wallet address. Create something fun that represents you or your business!</p>
+                  <ul class="bullet-text">
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-one.png"></div>
+                      Step 1 : In the handle input field, create a Smpl Handle
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-two.png"></div>
+                      Step 2 : Once you have created your Smpl Handle, tap the SAVE button
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/step1-handle-screen.png" alt="">
+                  <img class="screens" src="assets/images/step2-handle-screen.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/step1-handle-screen.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/step2-handle-screen.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2 class="slides-head">Welcome to your Smpl Wallet App</h2>
+                <div class="more">
+                  <p class="slides-text">Let’s walk you through your home dashboard, how to send funds and view
+                    transactions. Follow the color coordinated arrows to learn about the features within the app.</p>
+                  <ul class="bullet-text">
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-one.png"></div>
+                      Tap your user icon to open the menu navigation
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-two.png"></div>
+                      View your Total Available USDse Balance
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-three.png"></div>
+                      Expand to view and copy your wallet address
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-four.png"></div>
+                      View a list of all of your assets
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-five.png"></div>
+                      Buttons awaiting future functionality:
+                      Convert, Receive, and Deposit
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/slides-screen-one.png" alt="">
+                  <img class="screens" src="assets/images/slides-screen-two.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-one.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-two.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2 class="slides-head">How to send USDse</h2>
+                <div class="more">
+
+                  <p class="slides-text">Now that you’re familiar with your dashboard, learn how to send USDSE
+                    to another user’s Smpl Handle by following these steps:</p>
+                  <ul class="bullet-text">
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-one.png"></div>
+                      Step 1 : Tap the SEND button on your dashboard
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-two.png"></div>Step 2 : Enter another user’s handle</li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-three.png"></div>Step 3 : Select user</li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-three.png"></div>Step 4 : Enter the USDse amount</li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-four.png"></div>Step 5 : Enter the memo</li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-five.png"></div>Step 6 : Tap the Send button</li>
+                  </ul>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/handle-list-screen.png" alt="">
+                  <img class="screens" src="assets/images/handle-selected-screen.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/handle-list-screen.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/handle-selected-screen.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2 class="slides-head">View your transaction history</h2>
+                <div class="more">
+                  <p class="slides-text">Once you’ve made a transaction, you can review the details to verify
+                    transactions that have been sent or received.
+                  </p>
+                  <ul class="bullet-text">
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-one.png"></div>
+                      Access your transaction history by tapping the button in the navigation menu
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-two.png"></div>
+                      Get an overview of all funds sent and received
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-three.png"></div>
+                      Gain a deeper insight into the details of a specific transaction by tapping on it
+                    </li>
+                    <li class="bullets"><div class="img-div"><img src="assets/images/bullet-four.png"></div>
+                      Tap on the Smpl Ecosystem logo or back arrow to return to your home dashboard
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/slides-screen-five.png" alt="">
+                  <img class="screens" src="assets/images/slides-screen-six.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-five.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-six.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2 class="slides-head">Login with Smpl biometrics</h2>
+                <div class="more">
+                  <p class="slides-text">
+                    For a fast and safe login experience, enable the biometric login by toggling  ON / OFF  in the nav menu.
+                  </p>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/bio-disabled-screen.png" alt="">
+                  <img class="screens" src="assets/images/bio-enabled-screen.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/bio-disabled-screen.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/bio-enabled-screen.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="slider-holder">
+            <div class="row">
+              <div class="col">
+                <h3 class="smpl-wallet-text">Smpl Wallet</h3>
+                <h2>Now you’re ready to use your Smpl Wallet!</h2>
+                <div class="more">
+                  <div class="slides-text"> Tap <img src="assets/images/arrow-active.png"> below to enter your home
+                    dashboard, or tap <img src="assets/images/arrow-active-back.png"> to go back through the slides.
+                  </div>
+                </div>
+                <div class="dropdown-container" (click)="toggleRead($event)">
+                  <img class="dropdown" src="assets/images/arrow-down.png" alt="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="images">
+                  <img class="screens" src="assets/images/slides-screen-seven.png" alt="">
+                  <img class="screens" src="assets/images/slides-screen-eight.png" alt="">
+                </div>
+                <div class="mobile-img">
+                  <swiper [config]="config2">
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-seven.png" alt="">
+                    </ng-template>
+                    <ng-template swiperSlide>
+                      <img class="screens" src="assets/images/slides-screen-eight.png" alt="">
+                    </ng-template>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+      <button class="sw-next" (click)="slideNext()"><img src="assets/images/arrow-normal.png" class="arrow" alt="arrow"></button>
+      <button class="sw-prev" (click)="slidePrev()"><img src="assets/images/arrow-normal.png" class="arrow" alt="arrow"></button>
+    </div>
+  </main>
+</section>

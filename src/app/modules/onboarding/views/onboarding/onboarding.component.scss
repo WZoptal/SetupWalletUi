@@ -1,0 +1,17 @@
+.onboarding {
+  min-height: 100vh;
+  font-size: var(--font-16);
+}
+.logo{
+  margin-left: 66px;
+  margin-top: 27px;
+  @media (max-width: 880px) {
+    margin-left: 33px;
+    margin-top: 15px;
+  }
+  @media (max-width: 280px) {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+}
+

@@ -1,0 +1,167 @@
+::ng-deep .mat-dialog-container {
+  //background: radial-gradient(50% 50% at 50% 50%, rgba(53, 52, 48, 1) 0%, #0C1830 100%);
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  @media (max-width: 1415px) {
+    overflow: scroll;
+  }
+}
+
+.instruction-page{
+  border-radius: 16px;
+  color: white;
+  font-size: 16px;
+  font-family: Montserrat;
+  height: fit-content;
+  margin: 50px auto;
+  padding: 20px;
+  overflow: hidden;
+  width: 75.1%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(53, 52, 48, 1) 0%, #0C1830 100%);
+  @media (max-width: 880px) {
+    width: 90vw;
+  }
+  h1 {
+    color: white;
+    margin: 5px 0px;
+  }
+  p {
+    font-size: 14px;
+    margin: 0px;
+    line-height: 1.2em;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 22px;
+    margin: 15px 0px 5px;
+  }
+  a {
+    text-decoration: none;
+    color: #5682d4;
+    outline: none;
+    &:hover {
+      color: white;
+    }
+  }
+  .instructions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 0px;
+
+    p {
+      margin-top: 6px;
+      margin-bottom: 0px;
+      line-height: 1.3em;
+    }
+
+    .steps, .bank-details {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: left;
+      justify-content: space-between;
+      max-width: 500px;
+    }
+    ul {
+      padding: 0px;
+    }
+    ol {
+      padding: 5px 0px;
+      display: flex;
+      align-items: flex-start;
+      .number-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 600;
+        min-width: 30px;
+        min-height: 30px;
+        margin-right: 20px;
+      }
+    }
+    .label {
+      font-weight: 600;
+      margin: 8px 15px 0px 0px;
+    }
+    .code-container {
+      display: flex;
+      align-items: flex-end;
+      .code {
+        margin: 5px 15px 0px 0px;
+        display: flex;
+      }
+    }
+    .address {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  img {
+    height: 22px;
+    width: 22px;
+  }
+  .digit {
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 1px solid white;
+    width: 10px;
+    text-align: center;
+  }
+  .gold {
+    color: #D0AF6E;
+  }
+  .small {
+    font-size: 12px;
+  }
+
+  @media (max-width: 1025px) {
+    flex-wrap: wrap;
+    h2 {
+      font-size: 18px;
+    }
+  }
+}
+
+::ng-deep .wallet-menu {
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 22px;
+    height: 22px;
+  }
+}
+::ng-deep .wrapping-wallet {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  align-items: center;
+  .copy-icon {
+    image-rendering: smooth;
+    margin-right: 10px;
+  }
+}
+.bottom-text{
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+}
+.spacer{
+  display: flex;
+  margin-top: 20px;
+}

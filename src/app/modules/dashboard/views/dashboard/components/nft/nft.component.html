@@ -1,0 +1,65 @@
+<section class="content">
+    <div class="left-box">
+        <div class="table-container">
+            <div class="table-header">
+                <span *ngFor="let key of columns">{{key.label}}</span>
+            </div>
+            <div class="table-body">
+            </div>
+        </div>
+    </div>
+    <div class="right-box">
+        <mat-tab-group class="cstm-mat-tabs">
+          <mat-tab #convert>
+            <ng-template mat-tab-label>
+              <span class="icon">
+                <img *ngIf="!convert.isActive" src="assets/images/arrows_clockwise.svg" alt="">
+                <img *ngIf="convert.isActive" src="assets/images/arrows_clockwise_active.svg" alt="">
+              </span>
+              <span>Convert</span>
+            </ng-template>
+            <div class="tab-content">
+              NFT is not available
+            </div>
+          </mat-tab>
+          <mat-tab #send>
+            <ng-template mat-tab-label>
+              <span class="icon">
+                  <img *ngIf="!send.isActive" src="assets/images/send.png" alt="">
+                  <img *ngIf="send.isActive" src="assets/images/send-active.png" alt="">
+              </span>
+              <span>Send</span>
+            </ng-template>
+            <div class="tab-content">
+              NFT is not available
+            </div>
+          </mat-tab>
+          <div class="tabContainer">
+          <mat-tab #recieve>
+            <ng-template mat-tab-label>
+              <span class="icon">
+                <img *ngIf="!recieve.isActive" src="assets/images/download.png" alt="">
+                <img *ngIf="recieve.isActive" src="assets/images/download-active.png" alt="">
+              </span>
+              <span>Recieve</span>
+            </ng-template>
+            <div class="tab-content">
+              NFT is not available
+            </div>
+          </mat-tab>
+          <mat-tab #deposit>
+            <ng-template mat-tab-label>
+              <span class="icon">
+                <img *ngIf="!deposit.isActive" src="assets/images/depositIcon.svg" alt="">
+                <img *ngIf="deposit.isActive" src="assets/images/depositIcon-active.svg" alt="">
+              </span>
+              <span>Deposit</span>
+            </ng-template>
+            <div class="tab-content">
+              NFT is not available
+            </div>
+          </mat-tab>
+          </div>
+        </mat-tab-group>
+      </div>
+</section>

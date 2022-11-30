@@ -1,0 +1,92 @@
+version: '3'
+services:
+  VaultChainWalletService:
+    image: registry.digitalocean.com/smplfinance-image-registry/vault-chain-wallet-service:1.0.2
+    depends_on:
+      - VaultChainWalletServiceDatabase
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://VaultChainWalletServiceDatabase:5432/VaultChainWallets
+      DATASOURCE_USERNAME: vault-chain-wallets
+      DATASOURCE_PASSWORD: vault-chain-wallets
+      AuthServerUrl: http://192.168.1.107:8080/auth
+      AuthRole: vault-chain-wallet-service-user
+      LogLevel: DEBUG
+      ENCRYPTION_SECRET: abc123
+      AuthRealm: SmplFinance
+      AuthResource: vault-chain-wallet-service
+      AuthSecret: yprv9FUDArdchI3PWHnAG9u9PCIddzrG
+      CROSS_ORIGINS: "*"
+    ports:
+      - "8081:8081"
+  VaultChainWalletServiceDatabase:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=vault-chain-wallets
+      - POSTGRES_USER=vault-chain-wallets
+      - POSTGRES_DB=VaultChainWallets
+    volumes:
+      - ./mocks/VaultChainWalletServiceDatabase/init.sql:/docker-entrypoint-initdb.d/init.sql
+  keycloak:
+    image: registry.digitalocean.com/smplfinance-image-registry/identity-provider-service:1.0.3
+    depends_on:
+      - auth-db
+      - smtp4dev
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_ADDR: auth-db
+      DB_PASSWORD: keycloak
+      DB_USER: keycloak
+      DB_VENDOR: mariadb
+      DB_PORT: 3306
+    ports:
+      - "8080:8080"
+      - "9990:9000"
+  auth-db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloak
+      MYSQL_DATABASE: keycloak
+    volumes:
+      - ./keycloak-dev-init.sql:/docker-entrypoint-initdb.d/keycloak-dev-init.sql
+  AmbassadorProgramDatabase:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=AmbassadorProgram
+      - POSTGRES_USER=AmbassadorProgram
+      - POSTGRES_DB=AmbassadorProgram
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./mocks/AmbassadorProgramDatabase/init.sql:/docker-entrypoint-initdb.d/init.sql
+  AmbassadorProgramService:
+    image: registry.digitalocean.com/smplfinance-image-registry/ambassador-program-service:1.0.7
+    depends_on:
+      - AmbassadorProgramDatabase
+      - ReverseProxy
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://AmbassadorProgramDatabase:5432/AmbassadorProgram
+      NODE_CONFIG: ws://SmplChainReverseProxy:26658/websocket
+      ADDRESS_CONFIG: smpl1qzweszzcnkcyr2cn36dlt5upp99ce5eyranlzc
+      DATASOURCE_USERNAME: AmbassadorProgram
+      DATASOURCE_PASSWORD: AmbassadorProgram
+      DATASOURCE_DRIVER: org.postgresql.Driver
+    ports:
+      - "8084:8084"
+  SmplChain:
+    image: registry.digitalocean.com/smplfinance-image-registry/smpl-chain:2.1.0
+  ReverseProxy:
+    image: registry.digitalocean.com/smplfinance-image-registry/smpl-chain-reverse-proxy:1.0.0
+    depends_on:
+      - SmplChain
+    ports:
+      - "1318:1318"
+      - "26658:26658"
+  smtp4dev:
+    image: rnwood/smtp4dev
+    ports:
+      - '5000:80'
+      - '25:25'
+      - '143:143'
